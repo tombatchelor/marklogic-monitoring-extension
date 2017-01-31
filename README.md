@@ -51,39 +51,39 @@ This extension uses REST API to fetch metrics from MarkLogic server. Some of the
 
 1. Total Hosts - number of hosts in this cluster
 2. Disks Performance
- Query Read Rate - The moving average of reading query data from disk
- Journal Write Rate - The moving average of data writes to the journal.
- Save Write Rate - The moving average of data writes to in-memory stands.
- Merge Read Rate - The moving average of reading merge data from disk
- Merge Write Rate - The moving average of writing data for merges
- Backup Rate - The moving average of reading and writing backup data to disk.
- Restore Rate - The moving average of reading and writing restore data from disk.
- Large Read Rate - The moving average of reading large documents from disk.
- Large Write Rate - The moving average of writing data for large documents to disk.
+ - Query Read Rate - The moving average of reading query data from disk
+ - Journal Write Rate - The moving average of data writes to the journal.
+ - Save Write Rate - The moving average of data writes to in-memory stands.
+ - Merge Read Rate - The moving average of reading merge data from disk
+ - Merge Write Rate - The moving average of writing data for merges
+ - Backup Rate - The moving average of reading and writing backup data to disk.
+ - Restore Rate - The moving average of reading and writing restore data from disk.
+ - Large Read Rate - The moving average of reading large documents from disk.
+ - Large Write Rate - The moving average of writing data for large documents to disk.
 3. Memory
- System Page-In Rate - The page-in rate (from Linux /proc/vmstat) for the cluster in pages/sec.
- System Page-Out Rate - The page-out rate (from Linux /proc/vmstat) for the cluster in pages/sec.
- System Swap-In Rate - The swap-in rate (from Linux /proc/vmstat) for the cluster in pages/sec.
- System Swap-Out Rate - The swap-out rate (from Linux /proc/vmstat) for the cluster in pages/sec.
+ - System Page-In Rate - The page-in rate (from Linux /proc/vmstat) for the cluster in pages/sec.
+ - System Page-Out Rate - The page-out rate (from Linux /proc/vmstat) for the cluster in pages/sec.
+ - System Swap-In Rate - The swap-in rate (from Linux /proc/vmstat) for the cluster in pages/sec.
+ - System Swap-Out Rate - The swap-out rate (from Linux /proc/vmstat) for the cluster in pages/sec.
 4. Server Performance
- Request Rate - The total number of queries being processed per second, across all of the App Servers.
- Expanded Tree Cache Hits/Misses - The number of times per second that queries could use (Hits) and could not use (Misses) the expanded tree cache.
- Request Count
+ - Request Rate - The total number of queries being processed per second, across all of the App Servers.
+ - Expanded Tree Cache Hits/Misses - The number of times per second that queries could use (Hits) and could not use (Misses) the expanded tree cache.
+ - Request Count
 5. Network Performance
- XDQP Client Receive/Send Rate
- XDQP Server Receive/Send Rate
- XDQP Foreign Client Receive/Send Rate
- XDQP Foreign Server Receive/Send Rate
+ - XDQP Client Receive/Send Rate
+ - XDQP Server Receive/Send Rate
+ - XDQP Foreign Client Receive/Send Rate
+ - XDQP Foreign Server Receive/Send Rate
 6. Database Performance
- Read Lock Rate - The number of read locks set per second on each database.
- Write Lock Rate - The number of write locks set per second on each database.
- Deadlock Rate - The number of deadlocks per second on each database.
+ - Read Lock Rate - The number of read locks set per second on each database.
+ - Write Lock Rate - The number of write locks set per second on each database.
+ - Deadlock Rate - The number of deadlocks per second on each database.
 7. Requests Summary
- Total Requests
- Update Count
- Query Count
+ - Total Requests
+ - Update Count
+ - Query Count
 8. Transactions Summary
- Total Transactions
+ - Total Transactions
 
 
 ## Troubleshooting 
