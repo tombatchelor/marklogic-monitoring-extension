@@ -7,9 +7,10 @@ MarkLogic is an operational and transactional Enterprise NoSQL database that is 
 
 ##Installation
 1. Please start the Machine Agent before installing the extension and make sure that it reports data. Verify that the machine-agent status is UP and it is reporting Hardware Metrics
-2. Copy the "MarkLogicMonitor" directory to `<MACHINE_AGENT_HOME>/monitors`
-3. Configure the extension by following the below section and restart the Machine Agent.
-4. In the AppDynamics Metric Browser, look for: Application Infrastructure Performance | <Tier> | Individual Nodes | <Node> | Custom Metrics | MarkLogic
+2. To build from source, clone this repository and run `mvn clean install`. This will produce a MarkLogicMonitor-VERSION.zip in target directory. Alternatively download the latest release archive from [here](https://github.com/Appdynamics/marklogic-monitoring-extension/releases).
+3. Unzip as "MarkLogicMonitor" and copy it to `<MACHINE_AGENT_HOME>/monitors` directory.
+4. Configure the extension by following the below section and restart the Machine Agent.
+5. In the AppDynamics Metric Browser, look for: Application Infrastructure Performance | \<Tier\> | Individual Nodes | \<Node\> | Custom Metrics | MarkLogic
 
 ## Configuration
 Note : Please make sure to not use tab (\t) while editing yaml files. You may want to validate the yaml file using a [yaml validator](http://yamllint.com/)
@@ -43,11 +44,26 @@ Note : Please make sure to not use tab (\t) while editing yaml files. You may wa
 
    ```
    
-2. Configure the metrics you are interested in by editing the metrics.xml file in `<MACHINE_AGENT_HOME>/monitors/MarkLogicMonitor/`.
+2. Configure the metrics you are interested in by commenting/uncommenting the metrics in  metrics.xml file in `<MACHINE_AGENT_HOME>/monitors/MarkLogicMonitor/`.
 
+## WorkBench
+Workbench is a feature that lets you preview the metrics before registering it with the controller. This is useful if you want to fine tune the configurations. Workbench is embedded into the extension jar.
+To use the workbench
+
+1. Follow all the installation steps
+2. Start the workbench with the command
+`java -jar /path/to/MachineAgent/monitors/MarkLogicMonitor/marklogic-monitoring-extension.jar`
+This starts an http server at `http://host:9090/`. This can be accessed from the browser.
+3. If the server is not accessible from outside/browser, you can use the following end points to see the list of registered metrics and errors.
+#Get the stats
+`curl http://localhost:9090/api/stats`
+#Get the registered metrics
+`curl http://localhost:9090/api/metric-paths`
+4. You can make the changes to config.yml and validate it from the browser or the API
+5. Once the configuration is complete, you can kill the workbench and start the Machine Agent
 
 ## Metrics
-This extension uses REST API to fetch metrics from MarkLogic server. Some of the metrics are listed below:
+This extension uses REST API to fetch metrics from MarkLogic server. Please refer to this [screenshot](https://github.com/Appdynamics/marklogic-monitoring-extension/blob/master/MetricsSnapShot.png) for a view of metrics. Some of the metrics are listed below:
 
 1. Total Hosts - number of hosts in this cluster
 2. Disks Performance
@@ -85,29 +101,10 @@ This extension uses REST API to fetch metrics from MarkLogic server. Some of the
 8. Transactions Summary
  - Total Transactions
 
-
 ## Troubleshooting 
 1. Verify Machine Agent Data:Please start the Machine Agent without the extension and make sure that it reports data. Verify that the machine agent status is UP and it is reporting Hardware Metrics.
 2. Metric Limit: Please start the machine agent with the argument -Dappdynamics.agent.maxMetrics=2000, if there is a metric limit reached error in the logs.
-3. Collect Debug Logs: Edit the file, <MachineAgent>/conf/logging/log4j.xml and update the level of the appender "com.appdynamics" and "com.singularity" to debug.
-
-
-## WorkBench
-Workbench is a feature that lets you preview the metrics before registering it with the controller. This is useful if you want to fine tune the configurations. Workbench is embedded into the extension jar.
-To use the workbench
-
-1. Follow all the installation steps
-2. Start the workbench with the command
-java -jar /path/to/MachineAgent/monitors/MarkLogicMonitor/marklogic-monitoring-extension.jar
-This starts an http server at http://host:9090/. This can be accessed from the browser.
-3. If the server is not accessible from outside/browser, you can use the following end points to see the list of registered metrics and errors.
-#Get the stats
-curl http://localhost:9090/api/stats
-#Get the registered metrics
-curl http://localhost:9090/api/metric-paths
-4. You can make the changes to config.yml and validate it from the browser or the API
-5. Once the configuration is complete, you can kill the workbench and start the Machine Agent
-
+3. Collect Debug Logs: Edit the file, `<MachineAgent>/conf/logging/log4j.xml` and update the level of the appender "com.appdynamics" and "com.singularity" to debug.
 
 ##Support
 For any questions or feature request, please contact [AppDynamics Support](mailto:help@appdynamics.com).
