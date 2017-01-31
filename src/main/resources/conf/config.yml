@@ -1,0 +1,23 @@
+### ANY CHANGES TO THIS FILE DOES NOT REQUIRE A RESTART ###
+
+#This will create it in specific Tier/Component. Make sure to replace <COMPONENT_ID> with the appropriate one
+#from your environment. To find the <COMPONENT_ID> in your environment, please follow the screenshot in
+#https://docs.appdynamics.com/display/PRO42/Build+a+Monitoring+Extension+Using+Java
+
+metricPrefix: Server|Component:<COMPONENT_ID>|Custom Metrics|MarkLogic
+
+servers:
+  - displayName: Server1
+    uri: "http://localhost:8002"
+    username: "admin"
+    password: "p@ssword123"
+
+
+connection:
+  socketTimeout: 2000
+  connectTimeout: 2000
+
+
+# number of concurrent tasks.
+# This doesn't need to be changed unless many instances are configured
+numberOfThreads: 5

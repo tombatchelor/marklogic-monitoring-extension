@@ -1,0 +1,24 @@
+<monitor>
+    <name>MarkLogicMonitor</name>
+    <type>managed</type>
+    <description>MarkLogic monitor</description>
+    <monitor-configuration></monitor-configuration>
+    <monitor-run-task>
+        <execution-style>periodic</execution-style>
+        <execution-frequency-in-seconds>50</execution-frequency-in-seconds>
+        <name>MarkLogic Monitor Run Task</name>
+        <display-name>MarkLogic Monitor Task</display-name>
+        <description>MarkLogic Monitor Task</description>
+        <type>java</type>
+        <execution-timeout-in-secs>60</execution-timeout-in-secs>
+        <task-arguments>
+            <!-- config file-->
+            <argument name="config-file" is-required="true" default-value="monitors/MarkLogicMonitor/config.yml" />
+            <argument name="metrics-file" is-required="true" default-value="monitors/MarkLogicMonitor/metrics.xml" />
+        </task-arguments>
+        <java-task>
+            <classpath>marklogic-monitoring-extension.jar</classpath>
+            <impl-class>com.appdynamics.extensions.marklogic.MarkLogicMonitor</impl-class>
+        </java-task>
+    </monitor-run-task>
+</monitor>
