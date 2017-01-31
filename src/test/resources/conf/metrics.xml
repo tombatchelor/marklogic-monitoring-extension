@@ -1,59 +1,67 @@
 <metric-config>
     <stat url="/manage/v2?view=status" entry-node="local-cluster-status" metric-type="AVG.AVG.COL">
-        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|load-properties|load-detail">
-            <metric xpath="query-read-load" label="QueryRead|load"/>
-            <metric xpath="journal-write-load" label="JournalWrite|load"/>
-            <metric xpath="save-write-load" label="SaveWrite|load"/>
-            <metric xpath="merge-read-load" label="MergeRead|load"/>
-            <metric xpath="merge-write-load" label="MergeWrite|load"/>
-            <metric xpath="backup-read-load" label="BackupRead|load"/>
-            <metric xpath="backup-write-load" label="BackupWrite|load"/>
-            <metric xpath="restore-read-load" label="RestoreRead|load"/>
-            <metric xpath="restore-write-load" label="RestoreWrite|load"/>
-            <metric xpath="large-read-load" label="LargeRead|load"/>
-            <metric xpath="large-write-load" label="LargeWrite|load"/>
-            <metric xpath="external-binary-read-load" label="ExternalBinaryRead|load"/>
-
-            <metric xpath="xdqp-client-receive-load" label="XDQP Communication|ClientReceive|load"/>
-            <metric xpath="xdqp-client-send-load" label="XDQP Communication|ClientSend|load"/>
-            <metric xpath="xdqp-server-receive-load" label="XDQP Communication|ServerReceive|load"/>
-            <metric xpath="xdqp-server-send-load" label="XDQP Communication|ServerSend|load"/>
-            <metric xpath="foreign-xdqp-client-receive-load" label="XDQP Communication|ForeignClientReceive|load"/>
-            <metric xpath="foreign-xdqp-client-send-load" label="XDQP Communication|ForeignClientSend|load"/>
-            <metric xpath="foreign-xdqp-server-receive-load" label="XDQP Communication|ForeignServerReceive|load"/>
-            <metric xpath="foreign-xdqp-server-send-load" label="XDQP Communication|ForeignServerSend|load"/>
-            <metric xpath="xdqp-client-receive-load" label="XDQP Communication|ClientReceive|load"/>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary" prefix="Hosts Summary">
+            <metric xpath="total-hosts" label="Total Hosts"/>
+        </metric-group>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|load-properties|load-detail" prefix="Database Performance">
+            <metric xpath="read-lock-wait-load" label="Read Lock Wait Load"/>
+            <metric xpath="read-lock-hold-load" label="Read Lock Hold Load"/>
+            <metric xpath="write-lock-wait-load" label="Write Lock Wait Load"/>
+            <metric xpath="write-lock-hold-load" label="Write Lock Hold Load"/>
+            <metric xpath="deadlock-wait-load" label="Deadlock Wait Load"/>
         </metric-group>
 
-        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail">
-            <metric xpath="memory-process-swap-rate" label="Memory|ProcessSwapRate"/>
-            <metric xpath="memory-system-pagein-rate" label="Memory|SystemPageInRate"/>
-            <metric xpath="memory-system-pageout-rate" label="Memroy|SystemPageOutRate"/>
-            <metric xpath="memory-system-swapin-rate" label="Memory|SystemSwapInRate"/>
-            <metric xpath="memory-system-swapout-rate" label="Memory|SystemSwapOutRate"/>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Memory">
+            <metric xpath="memory-process-swap-rate" label="Process Swap Rate"/>
+            <metric xpath="memory-system-pagein-rate" label="System Page-In Rate"/>
+            <metric xpath="memory-system-pageout-rate" label="System Page-Out Rate"/>
+            <metric xpath="memory-system-swapin-rate" label="System Swap-In Rate"/>
+            <metric xpath="memory-system-swapout-rate" label="System Swap-Out Rate"/>
+        </metric-group>
 
-            <metric xpath="query-read-rate" label="QueryRead|rate"/>
-            <metric xpath="journal-write-rate" label="JournalWrite|rate"/>
-            <metric xpath="save-write-rate" label="SaveWrite|rate"/>
-            <metric xpath="merge-read-rate" label="MergeRead|rate"/>
-            <metric xpath="merge-write-rate" label="MergeWrite|rate"/>
-            <metric xpath="backup-read-rate" label="BackupRead|rate"/>
-            <metric xpath="backup-write-rate" label="BackupWrite|rate"/>
-            <metric xpath="restore-read-rate" label="RestoreRead|rate"/>
-            <metric xpath="restore-write-rate" label="RestoreWrite|rate"/>
-            <metric xpath="large-read-rate" label="LargeRead|rate"/>
-            <metric xpath="large-write-rate" label="LargeWrite|rate"/>
-            <metric xpath="external-binary-read-rate" label="ExternalBinaryRead|rate"/>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Disks Detail">
+            <metric xpath="query-read-rate" label="Query Read Rate"/>
+            <metric xpath="journal-write-rate" label="Journal Write Rate"/>
+            <metric xpath="save-write-rate" label="Save Write Rate"/>
+            <metric xpath="merge-read-rate" label="Merge Read Rate"/>
+            <metric xpath="merge-write-rate" label="Merge Write Rate"/>
+            <metric xpath="backup-read-rate" label="Backup Read Rate"/>
+            <metric xpath="backup-write-rate" label="Backup Write Rate"/>
+            <metric xpath="restore-read-rate" label="Restore Read Rate"/>
+            <metric xpath="restore-write-rate" label="Restore Write rate"/>
+            <metric xpath="large-read-rate" label="Large Read Rate"/>
+            <metric xpath="large-write-rate" label="Large Write Rate"/>
+            <metric xpath="external-binary-read-rate" label="External Binary Read Rate"/>
+        </metric-group>
 
-            <metric xpath="xdqp-client-receive-rate" label="XDQP Communication|ClientReceive|rate"/>
-            <metric xpath="xdqp-client-send-rate" label="XDQP Communication|ClientSend|rate"/>
-            <metric xpath="xdqp-server-receive-rate" label="XDQP Communication|ServerReceive|rate"/>
-            <metric xpath="xdqp-server-send-rate" label="XDQP Communication|ServerSend|rate"/>
-            <metric xpath="foreign-xdqp-client-receive-rate" label="XDQP Communication|ForeignClientReceive|rate"/>
-            <metric xpath="foreign-xdqp-client-send-rate" label="XDQP Communication|ForeignClientSend|rate"/>
-            <metric xpath="foreign-xdqp-server-receive-rate" label="XDQP Communication|ForeignServerReceive|rate"/>
-            <metric xpath="foreign-xdqp-server-send-rate" label="XDQP Communication|ForeignServerSend|rate"/>
-            <metric xpath="xdqp-client-receive-rate" label="XDQP Communication|ClientReceive|rate"/>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Network Performance">
+            <metric xpath="xdqp-client-receive-rate" label="XDQP Client Receive Rate"/>
+            <metric xpath="xdqp-client-send-rate" label="XDQP Client Send Rate"/>
+            <metric xpath="xdqp-server-receive-rate" label="XDQP Server Receive Rate"/>
+            <metric xpath="xdqp-server-send-rate" label="XDQP Server Send Rate"/>
+            <metric xpath="foreign-xdqp-client-receive-rate" label="XDQP Foreign Client Receive Rate"/>
+            <metric xpath="foreign-xdqp-client-send-rate" label="XDQP Foreign Client Send Rate"/>
+            <metric xpath="foreign-xdqp-server-receive-rate" label="XDQP Foreign Server Receive Rate"/>
+            <metric xpath="foreign-xdqp-server-send-rate" label="XDQP Foreign Server Send Rate"/>
+        </metric-group>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Database Performance">
+            <metric xpath="read-lock-rate" label="Read Lock Rate"/>
+            <metric xpath="write-lock-rate" label="Write Lock Rate"/>
+            <metric xpath="deadlock-rate" label="Deadlock Rate"/>
+        </metric-group>
+        <metric-group xpath="status-relations|servers-status|servers-status-summary" prefix="Server Performance">
+            <metric xpath="request-rate" label="Request Rate"/>
+            <metric xpath="expanded-tree-cache-miss-rate" label="Expanded Tree Cache Miss Rate"/>
+            <metric xpath="expanded-tree-cache-hit-rate" label="Expanded Tree Cache Hit Rate"/>
+            <metric xpath="request-count" label="Request Count"/>
+        </metric-group>
+        <metric-group xpath="status-relations|requests-status|requests-status-summary" prefix="Requests Summary">
+            <metric xpath="total-requests" label="Total Requests"/>
+            <metric xpath="update-count" label="Update Count"/>
+            <metric xpath="query-count" label="Query Count"/>
+        </metric-group>
+        <metric-group xpath="status-relations|transactions-status|transactions-status-summary" prefix="Transactions Summary">
+            <metric xpath="total-transactions" label="Total Transactions"/>
         </metric-group>
     </stat>
 </metric-config>
