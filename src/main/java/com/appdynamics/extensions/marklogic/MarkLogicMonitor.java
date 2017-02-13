@@ -26,6 +26,7 @@ import com.singularity.ee.agent.systemagent.api.TaskExecutionContext;
 import com.singularity.ee.agent.systemagent.api.TaskOutput;
 import com.singularity.ee.agent.systemagent.api.exception.TaskExecutionException;
 import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 
@@ -125,11 +126,9 @@ public class MarkLogicMonitor extends AManagedMonitor {
         ConsoleAppender ca = new ConsoleAppender();
         ca.setWriter(new OutputStreamWriter(System.out));
         ca.setLayout(new PatternLayout("%-5p [%t]: %m%n"));
-        ca.setThreshold(org.apache.log4j.Level.TRACE);
+        ca.setThreshold(Level.TRACE);
 
-        org.apache.log4j.Logger logger1 = org.apache.log4j.Logger.getLogger(MarkLogicMonitor.class);
-
-        logger1.getRootLogger().addAppender(ca);
+        logger.getRootLogger().addAppender(ca);
 
         final MarkLogicMonitor monitor = new MarkLogicMonitor();
 

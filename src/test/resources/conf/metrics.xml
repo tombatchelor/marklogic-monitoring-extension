@@ -63,5 +63,14 @@
         <metric-group xpath="status-relations|transactions-status|transactions-status-summary" prefix="Transactions Summary">
             <metric xpath="total-transactions" label="Total Transactions"/>
         </metric-group>
+        <metric-group xpath="status-relations|forests-status|forests-status-summary" prefix="Forests Summary">
+            <metric xpath="total-forests" label="Total Forests"/>
+        </metric-group>
+    </stat>
+
+    <stat url="/manage/v2/servers?view=status" entry-node="server-status-list" metric-type="AVG.AVG.COL">
+        <metric-group xpath="status-list-summary" prefix="AppServer Summary">
+            <metric xpath="request-rate" label="Request Rate"/>
+        </metric-group>
     </stat>
 </metric-config>

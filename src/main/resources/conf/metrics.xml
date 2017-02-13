@@ -63,5 +63,8 @@
         <metric-group xpath="status-relations|transactions-status|transactions-status-summary" prefix="Transactions Summary">
             <metric xpath="total-transactions" label="Total Transactions"/>
         </metric-group>
+        <metric-group xpath="status-relations|forests-status|forests-status-summary" prefix="Forests Summary">
+            <metric xpath="total-forests" label="Total Forests"/>
+        </metric-group>
     </stat>
 </metric-config>
