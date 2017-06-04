@@ -25,12 +25,16 @@ import javax.xml.bind.annotation.XmlElement;
 public class Stat {
     @XmlElement(name = "metric-group")
     private MetricGroup[] metricGroups;
-    @XmlAttribute
-    private String url;
+    @XmlAttribute(name="url-suffix")
+    private String urlSuffix;
     @XmlAttribute(name="entry-node")
     private String entryNode;
     @XmlAttribute(name="metric-type")
     private String metricType;
+    @XmlAttribute(name="entity-url")
+    private String entityURL;
+    @XmlAttribute(name="display-name")
+    private String displayName;
 
     public MetricGroup[] getMetricGroups() {
         return metricGroups;
@@ -40,12 +44,12 @@ public class Stat {
         this.metricGroups = metricGroups;
     }
 
-    public String getUrl() {
-        return url;
+    public String getUrlSuffix() {
+        return urlSuffix;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlSuffix(String urlSuffix) {
+        this.urlSuffix = urlSuffix;
     }
 
     public String getMetricType() {
@@ -62,5 +66,33 @@ public class Stat {
 
     public void setEntryNode(String entryNode) {
         this.entryNode = entryNode;
+    }
+
+    /**
+     * @return the entityURL
+     */
+    public String getEntityURL() {
+        return entityURL;
+    }
+
+    /**
+     * @param entityURL the entityURL to set
+     */
+    public void setEntityURL(String entityURL) {
+        this.entityURL = entityURL;
+    }
+
+    /**
+     * @return the displayName
+     */
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    /**
+     * @param displayName the displayName to set
+     */
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 }

@@ -4,13 +4,13 @@
 #from your environment. To find the <COMPONENT_ID> in your environment, please follow the screenshot in
 #https://docs.appdynamics.com/display/PRO42/Build+a+Monitoring+Extension+Using+Java
 
-metricPrefix: Server|Component:<COMPONENT_ID>|Custom Metrics|MarkLogic
+metricPrefix: Custom Metrics|MarkLogic
 
 servers:
   - displayName: Server1
-    uri: "http://localhost:8002"
+    uri: "http://192.168.56.101:8002"
     username: "admin"
-    password: "p@ssword123"
+    password: "admin"
 
 
 connection:

@@ -1,5 +1,5 @@
-<metric-config>
-    <stat url="/manage/v2?view=status" entry-node="local-cluster-status" metric-type="AVG.AVG.COL">
+<metric-config> <!-- /manage/v2?view=status -->
+    <stat url-suffix="?view=status" entry-node="local-cluster-status" metric-type="AVG.AVG.COL" entity-url="/manage/v2/forests?view=default" xpath="forest-default-list|list-item">
         <metric-group xpath="status-relations|hosts-status|hosts-status-summary" prefix="Hosts Summary">
             <metric xpath="total-hosts" label="Total Hosts"/>
         </metric-group>
@@ -32,6 +32,73 @@
             <metric xpath="large-read-rate" label="Large Read Rate"/>
             <metric xpath="large-write-rate" label="Large Write Rate"/>
             <metric xpath="external-binary-read-rate" label="External Binary Read Rate"/>
+        </metric-group>
+
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Network Performance">
+            <metric xpath="xdqp-client-receive-rate" label="XDQP Client Receive Rate"/>
+            <metric xpath="xdqp-client-send-rate" label="XDQP Client Send Rate"/>
+            <metric xpath="xdqp-server-receive-rate" label="XDQP Server Receive Rate"/>
+            <metric xpath="xdqp-server-send-rate" label="XDQP Server Send Rate"/>
+            <metric xpath="foreign-xdqp-client-receive-rate" label="XDQP Foreign Client Receive Rate"/>
+            <metric xpath="foreign-xdqp-client-send-rate" label="XDQP Foreign Client Send Rate"/>
+            <metric xpath="foreign-xdqp-server-receive-rate" label="XDQP Foreign Server Receive Rate"/>
+            <metric xpath="foreign-xdqp-server-send-rate" label="XDQP Foreign Server Send Rate"/>
+        </metric-group>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Database Performance">
+            <metric xpath="read-lock-rate" label="Read Lock Rate"/>
+            <metric xpath="write-lock-rate" label="Write Lock Rate"/>
+            <metric xpath="deadlock-rate" label="Deadlock Rate"/>
+        </metric-group>
+        <metric-group xpath="status-relations|servers-status|servers-status-summary" prefix="Server Performance">
+            <metric xpath="request-rate" label="Request Rate"/>
+            <metric xpath="expanded-tree-cache-miss-rate" label="Expanded Tree Cache Miss Rate"/>
+            <metric xpath="expanded-tree-cache-hit-rate" label="Expanded Tree Cache Hit Rate"/>
+            <metric xpath="request-count" label="Request Count"/>
+        </metric-group>
+        <metric-group xpath="status-relations|requests-status|requests-status-summary" prefix="Requests Summary">
+            <metric xpath="total-requests" label="Total Requests"/>
+            <metric xpath="update-count" label="Update Count"/>
+            <metric xpath="query-count" label="Query Count"/>
+        </metric-group>
+        <metric-group xpath="status-relations|transactions-status|transactions-status-summary" prefix="Transactions Summary">
+            <metric xpath="total-transactions" label="Total Transactions"/>
+        </metric-group>
+        <metric-group xpath="status-relations|forests-status|forests-status-summary" prefix="Forests Summary">
+            <metric xpath="total-forests" label="Total Forests"/>
+        </metric-group>
+    </stat>
+    <stat url-suffix="?view=status" entry-node="database-status" metric-type="AVG.AVG.COL" entity-url="/manage/v2/databases?view=default" display-name="Daatabases">
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary" prefix="Hosts Summary">
+            <metric xpath="total-hosts" label="Total Hosts"/>
+        </metric-group>
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|load-properties|load-detail" prefix="Database Performance">
+            <metric xpath="read-lock-wait-load" label="Read Lock Wait Load"/>
+            <metric xpath="read-lock-hold-load" label="Read Lock Hold Load"/>
+            <metric xpath="write-lock-wait-load" label="Write Lock Wait Load"/>
+            <metric xpath="write-lock-hold-load" label="Write Lock Hold Load"/>
+            <metric xpath="deadlock-wait-load" label="Deadlock Wait Load"/>
+        </metric-group>
+
+        <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Memory">
+            <metric xpath="memory-process-swap-rate" label="Process Swap Rate"/>
+            <metric xpath="memory-system-pagein-rate" label="System Page-In Rate"/>
+            <metric xpath="memory-system-pageout-rate" label="System Page-Out Rate"/>
+            <metric xpath="memory-system-swapin-rate" label="System Swap-In Rate"/>
+            <metric xpath="memory-system-swapout-rate" label="System Swap-Out Rate"/>
+        </metric-group>
+
+        <metric-group xpath="status-properties|rate-properties|rate-detail" prefix="Disks Detail">
+            <metric xpath="query-read-rate" label="Query Read Rate"/>
+            <metric xpath="journal-write-rate" label="Journal Write Rate"/>
+            <metric xpath="save-write-rate" label="Save Write Rate"/>
+            <metric xpath="merge-read-rate" label="Merge Read Rate"/>
+            <metric xpath="merge-write-rate" label="Merge Write Rate"/>
+            <metric xpath="backup-read-rate" label="Backup Read Rate"/>
+            <metric xpath="backup-write-rate" label="Backup Write Rate"/>
+            <metric xpath="restore-read-rate" label="Restore Read Rate"/>
+            <metric xpath="restore-write-rate" label="Restore Write rate"/>
+            <metric xpath="large-read-rate" label="Large Read Rate"/>
+            <metric xpath="large-write-rate" label="Large Write Rate"/>
         </metric-group>
 
         <metric-group xpath="status-relations|hosts-status|hosts-status-summary|rate-properties|rate-detail" prefix="Network Performance">
