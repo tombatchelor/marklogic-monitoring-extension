@@ -80,10 +80,6 @@ public class MarkLogicMonitorTask implements Runnable {
                 urlBuilder = UrlBuilder.fromYmlServerConfig(server).path(stat.getEntityURL() + "&format=json");
                 url = urlBuilder.build();
                 JsonNode entityList = HttpClientUtils.getResponseAsJson(configuration.getHttpClient(), url, JsonNode.class);
-                //logger.info(entityList.toString());
-                //logger.info(entityList.getElements().next());
-                //logger.info(entityList.getElements().next().get("list-items"));
-                //logger.info(entityList.getElements().next().get("list-items").get("list-item"));
                 Iterator<JsonNode> itr = entityList.getElements().next().get("list-items").get("list-item").iterator();
                 while (itr.hasNext()) {
                     JsonNode entity = itr.next();
@@ -120,10 +116,8 @@ public class MarkLogicMonitorTask implements Runnable {
     private String getMetricPath(String metricGroupPrefix, Metric metric, JsonNode jsonNode, String entityName, String displayName) {
         String metricName = metric.getLabel() + "(" + jsonNode.path(metric.getXpath()).path("units").asText() + ")";
         if (!Strings.isNullOrEmpty(metricGroupPrefix)) {
-            logger.info(displayName + "|" + entityName + "|" + metricGroupPrefix + "|" + metricName);
             return displayName + "|" + entityName + "|" + metricGroupPrefix + "|" + metricName;
         } else {
-            logger.info(metricName);
             return metricName;
         }
     }
@@ -136,7 +130,16 @@ public class MarkLogicMonitorTask implements Runnable {
     private BigDecimal extractMetricValueFromNode(JsonNode node, String metric) {
         try {
             String value = node.path(metric).path("value").asText();
-            return new BigDecimal(value).setScale(0, RoundingMode.HALF_UP);
+            String type = node.path(metric).path("units").asText();
+            if (type.contentEquals("bool")) {
+                if (value.contentEquals("true")) {
+                    return new BigDecimal(1);
+                } else {
+                    return new BigDecimal(0);
+                }
+            } else {
+                return new BigDecimal(value).setScale(0, RoundingMode.HALF_UP);
+            }
         } catch (NumberFormatException ex) {
             logger.error("Number exception for metric: " + metric, ex);
             return new BigDecimal(0);
