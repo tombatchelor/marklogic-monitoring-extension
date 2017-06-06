@@ -35,6 +35,8 @@ public class Stat {
     private String entityURL;
     @XmlAttribute(name="display-name")
     private String displayName;
+    @XmlAttribute(name="loopable")
+    private boolean loopable;
 
     public MetricGroup[] getMetricGroups() {
         return metricGroups;
@@ -94,5 +96,19 @@ public class Stat {
      */
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    /**
+     * @return the loopable
+     */
+    public boolean isLoopable() {
+        return loopable;
+    }
+
+    /**
+     * @param loopable the loopable to set
+     */
+    public void setLoopable(boolean loopable) {
+        this.loopable = loopable;
     }
 }

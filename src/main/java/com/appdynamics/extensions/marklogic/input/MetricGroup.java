@@ -28,6 +28,8 @@ public class MetricGroup {
     private String xpath;
     @XmlAttribute
     private String prefix;
+    @XmlAttribute(name="inner-name-identifier")
+    private String innerNameIdentifier;
 
     public Metric[] getMetrics() {
         return metrics;
@@ -51,5 +53,19 @@ public class MetricGroup {
 
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+    }
+
+    /**
+     * @return the innerNameIdentifier
+     */
+    public String getInnerNameIdentifier() {
+        return innerNameIdentifier;
+    }
+
+    /**
+     * @param innerNameIdentifier the innerNameIdentifier to set
+     */
+    public void setInnerNameIdentifier(String innerNameIdentifier) {
+        this.innerNameIdentifier = innerNameIdentifier;
     }
 }
